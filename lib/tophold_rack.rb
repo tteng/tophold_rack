@@ -1,6 +1,4 @@
 require "tophold_rack/version"
-require "tophold_rack/engine"
-require "tophold_rack/redispatcher"
 
 module TopholdRack
 
@@ -11,3 +9,6 @@ module TopholdRack
   end
 
 end
+
+require "tophold_rack/engine"
+require "tophold_rack/redispatcher"
