@@ -10,9 +10,8 @@ module TopholdRack
       request = Rack::Request.new env
       p "path: #{request.path}" 
       p "params: #{request.params}"
-      env.keys.sort.each do |k|
-        p k
-      end
+      p env["rack.session"].inspect
+      p env["warden"].inspect
       @app.call env #pass the buckets
     end
   
