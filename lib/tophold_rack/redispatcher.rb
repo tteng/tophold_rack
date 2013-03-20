@@ -1,3 +1,5 @@
+require 'yml'
+
 module TopholdRack
 
   class Redispatcher
@@ -11,7 +13,6 @@ module TopholdRack
       p "path: #{request.path}" 
       p "params: #{request.params}"
       p env["rack.session"]["warden.user.admin_user.key"][1].inspect
-      p env["warden"].config["default_scope"]
       @app.call env #pass the buckets
     end
   
