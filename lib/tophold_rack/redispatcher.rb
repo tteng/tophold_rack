@@ -10,7 +10,7 @@ module TopholdRack
       request = Rack::Request.new env
       p "path: #{request.path}" 
       p "params: #{request.params}"
-      p Rails.app
+      p Rails.application.session.inspect
       @app.call env #pass the buckets
     end
   
