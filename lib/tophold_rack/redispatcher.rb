@@ -1,5 +1,3 @@
-require 'yml'
-
 module TopholdRack
 
   class Redispatcher
