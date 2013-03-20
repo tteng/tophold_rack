@@ -6,17 +6,19 @@ module TopholdRack
       @app = app
     end
 
+    def request_black_list 
+      @black_list ||= /^\/(#{Rails.configuration.tophold_rack_request_black_list.join('|')})/
+      p @black_list
+      @black_list
+    end
+
     def call env
       request = Rack::Request.new env
       if request.get?
-        p "request: #{request.body}"
         path, params = request.path, request.params
-        p "path: #{request.path}" 
-        p "params: #{request.params}"
         scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
-        user_id = scope[1][0] if scope
-        p "/\/^(#{Rails.configuration.tophold_rack_request_black_list.join('|')})/"
-        unless path =~ /\/^(#{Rails.configuration.tophold_rack_request_black_list.join('|')})/
+        user_id = scope ? scope[1][0] : nil
+        unless path =~ request_black_list            
           p "passed..."
         end
       end
