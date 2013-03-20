@@ -10,7 +10,12 @@ module TopholdRack
       request = Rack::Request.new env
       p "path: #{request.path}" 
       p "params: #{request.params}"
-      p env["rack.session"]["warden.user.admin_user.key"][1].inspect
+      scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}"]
+      if scope
+        p scope[1].inspect 
+      else
+        p nil
+      end
       @app.call env #pass the buckets
     end
   
