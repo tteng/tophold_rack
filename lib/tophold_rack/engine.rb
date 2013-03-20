@@ -3,6 +3,8 @@ module TopholdRack
   class Engine < Rails::Engine
 
     config.tophold_rack_devise_scope = "user"
+
+    config.tophold_rack_request_black_list = ["uploads", "assets"]
  
     initializer "tophold_rack.load_app_instance_data" do |app|
       TopholdRack.setup do |config|
