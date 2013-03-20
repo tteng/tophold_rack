@@ -1,4 +1,3 @@
-require "devise"
 require "tophold_rack/version"
 
 module TopholdRack

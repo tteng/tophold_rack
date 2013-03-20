@@ -9,8 +9,8 @@ module TopholdRack
     end   
 
     initializer "tophold_rack.add_middleware_after_devise" do |app|
-      STDOUT.puts " invokded ... "
-      app.middleware.insert_after ActionDispatch::Session::CookieStore, TopholdRack::Redispatcher
+      #app.middleware.insert_after ActionDispatch::Session::CookieStore, TopholdRack::Redispatcher
+      app.middleware.use TopholdRack::Redispatcher
     end
   
   end
