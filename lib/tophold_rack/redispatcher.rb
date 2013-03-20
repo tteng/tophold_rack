@@ -15,7 +15,7 @@ module TopholdRack
         p "params: #{request.params}"
         scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
         user_id = scope[1][0] if scope
-        unless path =~ /^(#{Rails.configurationi.tophold_rack_request_black_list.join('|')})/
+        unless path =~ /^(#{Rails.configuration.tophold_rack_request_black_list.join('|')})/
           p "passed..."
         end
       end
