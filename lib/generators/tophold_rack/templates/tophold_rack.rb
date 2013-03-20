@@ -35,5 +35,10 @@
 Rails.configuration.tophold_rack_devise_scope = "user"
 
 #BTW, not all requests should be analyzed, such as static files and admin requests, by default 
-#tophold_rack will not collect request begin with "/uploads", "/assets", customize this to meet your requirments.
+#tophold_rack will not collect request begin with "uploads", "assets",
+#belowing requests will be ignored:
+#  http://somedomain.com/uploads/post/document/14/normal_786_938652_586928.jpg
+#  http://somedomain.com/assets/jquery-migrate-1.1.1.min.js?body=1 
+#  http://somedomain.com/assets/xxx/xxx.*
+#customize this to meet your requirments.
 Rails.configuration.tophold_rack_request_black_list << "admin"
