@@ -8,8 +8,6 @@ module TopholdRack
 
     def request_black_list 
       @black_list ||= /^\/(#{Rails.configuration.tophold_rack_request_black_list.join('|')})/
-      p @black_list
-      @black_list
     end
 
     def call env
