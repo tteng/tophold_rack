@@ -10,6 +10,7 @@ module TopholdRack
       request = Rack::Request.new env
       p "path: #{request.path}" 
       p "params: #{request.params}"
+      p "warden.user.#{Rails.configuration.tophold_rack_devise_scope}"
       scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}"]
       if scope
         p scope[1].inspect 
