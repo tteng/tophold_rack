@@ -9,7 +9,7 @@ module TopholdRack
     def call env
       request = Rack::Request.new env
       p "path: #{request.path}" 
-      p "params: #{request.params]}"
+      p "params: #{request.params}"
       @app.call env #pass the buckets
     end
   
