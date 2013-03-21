@@ -42,3 +42,6 @@ Rails.configuration.tophold_rack_devise_scope = "user"
 #  http://somedomain.com/assets/xxx/xxx.*
 #customize this to meet your requirments.
 Rails.configuration.tophold_rack_request_black_list << "admin"
+
+#3rd party tracking url
+Rails.configuration.tophold_rack_tracking_url = "http://localhost:8888/tracking/"

@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module TopholdRack
 
   class Redispatcher
@@ -13,11 +15,11 @@ module TopholdRack
     def call env
       request = Rack::Request.new env
       if request.get?
-        path, params = request.path, request.params
+        path, query = request.path, request.query_string
         scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
         user_id = scope ? scope[1][0] : nil
         unless path =~ request_black_list            
-          
+          open URI.join(Rails.configuration.tophold_rack_tracking_url, %Q{?request_url="#{query}"}).to_s
         end
       end
       @app.call env #pass the buckets
