@@ -1,3 +1,4 @@
+require 'cgi'
 require 'open-uri'
 
 module TopholdRack
@@ -19,8 +20,9 @@ module TopholdRack
         scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
         user_id = scope ? scope[1][0] : nil
         unless path =~ request_black_list            
-          url = Rails.configuration.tophold_rack_tracking_url+"?request_url=\"#{path + query ? ('?'+query) : ''}\""
-          p url
+          str = path
+          str += "?#{query}" unless query.blank?
+          url = Rails.configuration.tophold_rack_tracking_url+"?request_url=#{CGI.escape str}"
           open url
         end
       end
