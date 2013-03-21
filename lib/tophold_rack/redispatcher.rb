@@ -23,6 +23,7 @@ module TopholdRack
           str = path
           str += "?#{query}" unless query.blank?
           url = Rails.configuration.tophold_rack_tracking_url+"?request_url=#{CGI.escape str}"
+          p url
           open url
         end
       end
