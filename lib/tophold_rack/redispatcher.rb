@@ -20,8 +20,7 @@ module TopholdRack
         scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
         user_id = scope ? scope[1][0] : nil
         unless path =~ request_black_list            
-          str = path.blank? ? '/' : path
-          str += "?#{query}" unless query.blank?
+          str = "#{path.blank? ? '/' : path}?query=#{query}&user_id=#{user_id}" 
           url = Rails.configuration.tophold_rack_tracking_url+"?request_url=#{CGI.escape str}"
           open url
         end
