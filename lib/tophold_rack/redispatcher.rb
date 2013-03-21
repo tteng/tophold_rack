@@ -20,7 +20,8 @@ module TopholdRack
         scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
         user_id = scope ? scope[1][0] : nil
         unless path =~ request_black_list            
-          open URI.join(Rails.configuration.tophold_rack_tracking_url, %Q{?request_url="#{query}"}).to_s
+          p Rails.configuration.tophold_rack_tracking_url
+          open URI.join(Rails.configuration.tophold_rack_tracking_url, "?request_url=\"#{query}\"").to_s
         end
       end
       @app.call env #pass the buckets
