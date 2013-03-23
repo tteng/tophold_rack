@@ -1,9 +1,18 @@
 ## Scenario
 
 Once you want to do some statistics on your ROR application, there're three solutions so far as I know.
-One is to analyze the log file(decouple way, but need to customize the log format to record who is the current user) and the other way is add some callbacks in your code(coupled). And also you could use the google analytics(not so realtime). 
-Today I introduce you the way I do. When we talk about how to authticate in rails, people may suggest you the very popular gem ``` devise ```, it's based on the ```warden``` middleware, and you can access the seeeion in your rack code. Since with rack we could access the request info(path, query string etc) and we also could access the session info, why not we collect these info and parse it? 
-That's what tophold_rack do. Tophold rack will not perform *statistics* work, it only collect nessary info and send it to the 3rd party ( I coded this module with node, see detail at [here](https://github.com/tteng/fetch_stock_quotes/blob/master/src/tracking_handler.coffee)
+
+  *  One is to analyze the log file(decouple way, but need to customize the log format to record who is the current user) 
+  *  The other way is add some callbacks in your code(coupled). 
+  *  And also you could use the google analytics(not so realtime). 
+
+Today I introduce you the way I do. 
+
+When we talk about how to authticate in rails, people may suggest you the very popular gem ``` devise ```, it's based on the ```warden``` middleware, and you can access the seeeion in your rack code. 
+
+Since with rack we could access the request info(path, query string etc) and we also could access the session info, why not we collect these info and parse it? 
+
+That's what tophold_rack do. Tophold rack will not perform *statistics* work, it only collect nessary info and send it to the 3rd party ( I coded this module with node, see detail at [here] (https://github.com/tteng/fetch_stock_quotes/blob/master/src/tracking_handler.coffee)
 
 ## Installation
 
