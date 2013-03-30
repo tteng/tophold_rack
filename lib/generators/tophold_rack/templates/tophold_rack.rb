@@ -45,3 +45,7 @@ Rails.configuration.tophold_rack_request_black_list << "admin"
 
 #3rd party tracking url
 Rails.configuration.tophold_rack_tracking_url = "http://localhost:8888/tracking/"
+
+#if Rails.env.development?
+#  Rails.configuration.tophold_rack_disabled = true
+#end

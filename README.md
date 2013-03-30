@@ -46,6 +46,10 @@ Sometimes we don't want to analyze assets and some static file uri, it make no s
 
 The last thing is to specify which url to receive these parameters and to do the detaild parse job. I prefer node, it's bloody fast and non-block, will make the cost to the minimum level. Also you can push these parameters to a redis list, and parse it with blpop, it's up to you.
 
+And the last, you can disable/enable this middleware by toggle the switch
+
+    Rails.configuration.tophold_rack_disabled = true/false
+
 ## Contributing
 
 1. Fork it

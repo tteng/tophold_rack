@@ -7,6 +7,8 @@ module TopholdRack
     config.tophold_rack_request_black_list = ["uploads", "assets"]
 
     config.tophold_rack_tracking_url = "http://localhost:8888/tracking/"
+
+    config.tophold_rack_disabled = false
  
     initializer "tophold_rack.load_app_instance_data" do |app|
       TopholdRack.setup do |config|
