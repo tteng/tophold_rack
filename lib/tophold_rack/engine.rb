@@ -6,8 +6,6 @@ module TopholdRack
 
     config.tophold_rack_request_black_list = ["uploads", "assets"]
 
-    config.tophold_rack_tracking_url = "http://localhost:8888/tracking/"
-
     config.tophold_rack_disabled = false
 
     config.tophold_statistics_redis = "127.0.0.1:6379/static"
