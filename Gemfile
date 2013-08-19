@@ -6,4 +6,8 @@ gem 'rack'
 
 gem 'devise'
 
+gem 'redis'
+
+gem 'redis-namespace'
+
 gemspec

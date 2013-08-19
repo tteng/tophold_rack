@@ -43,8 +43,10 @@ Rails.configuration.tophold_rack_devise_scope = "user"
 #customize this to meet your requirments.
 Rails.configuration.tophold_rack_request_black_list << "admin"
 
-#3rd party tracking url
-Rails.configuration.tophold_rack_tracking_url = "http://localhost:8888/tracking/"
+#track redis settings
+redis = Redis.new host: "127.0.0.1", port: 6379
+space = Redis::Namespace.new 'st', redis: redis 
+Rails.configuration.tophold_statistics_redis = space
 
 #if Rails.env.development?
 #  Rails.configuration.tophold_rack_disabled = true

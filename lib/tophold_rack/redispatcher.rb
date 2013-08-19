@@ -7,6 +7,7 @@ module TopholdRack
 
     def initialize app
       @app = app
+      @redis = app.configuration.tophold_staticstics_redis
     end
 
     def request_black_list 
@@ -23,11 +24,9 @@ module TopholdRack
           else
             user_id = nil
           end
-          unless path =~ request_black_list            
-            str = "#{path.blank? ? '/' : path}?query=#{query}&user_id=#{user_id}" 
-            url = Rails.configuration.tophold_rack_tracking_url+"?request_url=#{CGI.escape str}"
+          unless path =~ request_black_list
             begin
-              open url
+              @redis.push(key,{user_id: user_id, url: query, visited_date: Date.today}.to_json)
             rescue Exception => e
               Rails.logger.fatal 'RedisDispatcher can not work!'
             end
