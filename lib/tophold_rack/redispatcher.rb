@@ -26,8 +26,9 @@ module TopholdRack
           end
           unless path =~ request_black_list
             begin
-              @redis.push(key,{user_id: user_id, url: query, visited_date: Date.today}.to_json)
+              @redis.lpush(Rails.configuration.tophold_statistics_queue,{user_id: user_id, url: path, visited_date: Date.today}.to_json)
             rescue Exception => e
+              raise e
               Rails.logger.fatal 'RedisDispatcher can not work!'
             end
           end

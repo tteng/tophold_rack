@@ -7,8 +7,14 @@ module TopholdRack
     config.tophold_rack_request_black_list = ["uploads", "assets"]
 
     config.tophold_rack_disabled = false
+    
+    redis = Redis.new host: "127.0.0.1", port: 6379
+    
+    nspace = Redis::Namespace.new 'st', redis: redis
 
-    config.tophold_statistics_redis = "127.0.0.1:6379/static"
+    config.tophold_statistics_redis = nspace
+    
+    config.tophold_statistics_queue = "static"
  
     initializer "tophold_rack.load_app_instance_data" do |app|
       TopholdRack.setup do |config|

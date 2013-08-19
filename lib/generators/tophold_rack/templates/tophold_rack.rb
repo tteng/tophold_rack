@@ -48,6 +48,8 @@ redis = Redis.new host: "127.0.0.1", port: 6379
 space = Redis::Namespace.new 'st', redis: redis 
 Rails.configuration.tophold_statistics_redis = space
 
+Rails.configuration.tophold_statistics_queue = "static"
+
 #if Rails.env.development?
 #  Rails.configuration.tophold_rack_disabled = true
 #end

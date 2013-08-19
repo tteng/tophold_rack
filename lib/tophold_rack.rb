@@ -1,4 +1,6 @@
 require "tophold_rack/version"
+require "redis"
+require "redis-namespace"
 
 module TopholdRack
 
