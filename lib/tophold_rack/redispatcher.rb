@@ -7,7 +7,7 @@ module TopholdRack
 
     def initialize app
       @app = app
-      @redis = app.configuration.tophold_staticstics_redis
+      @redis = Rails.configuration.tophold_staticstics_redis
     end
 
     def request_black_list 
