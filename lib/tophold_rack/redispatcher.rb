@@ -17,7 +17,7 @@ module TopholdRack
     def call env
       unless Rails.configuration.tophold_rack_disabled
         request = Rack::Request.new env
-        if request.get?
+        if request.get? && !request.xhr?
           path, query = request.path, request.query_string
           if scope = env["rack.session"]["warden.user.#{Rails.configuration.tophold_rack_devise_scope}.key"]
             user_id = scope[1][0].to_s =~ /\d+/ ? scope[1][0] : scope[0][0]
